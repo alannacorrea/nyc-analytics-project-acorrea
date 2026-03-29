@@ -2,7 +2,7 @@
 -- One row per request
 
 WITH source AS (
-   SELECT * FROM {{ source('raw', 'source_nyc_open_restaurant_apps') }}
+   SELECT * FROM {{ source('raw_2', 'source_nyc_open_restaurant_apps') }}
 ), -- Easier to refer to the dbt reference to a long name table this way
 
 cleaned AS (
@@ -15,12 +15,11 @@ cleaned AS (
         sidewalk_dimensions_length,
         sidewalk_dimensions_width,
         sidewalk_dimensions_area,
-        roadway_dimensions_length
+        roadway_dimensions_length,
         roadway_dimensions_width,
         roadway_dimensions_area,
         zip,
         building_number,
-
         latitude,
         longitude
        ),
