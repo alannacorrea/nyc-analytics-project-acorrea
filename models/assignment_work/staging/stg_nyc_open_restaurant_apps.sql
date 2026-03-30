@@ -37,7 +37,7 @@ cleaned AS (
         END AS building_number
        CASE
         WHEN  UPPER(TRIM(CAST(food_service_establishment AS STRING))) = 'PENDING' THEN 'PENDING'
-        ELSE CAST(food_service_establishment AS STRING),
+        ELSE CAST(food_service_establishment AS STRING)
         END AS food_service_establishment
 
        -- Location - clean zip code, handling several common zip code data problems
