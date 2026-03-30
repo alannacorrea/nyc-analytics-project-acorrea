@@ -20,6 +20,7 @@ cleaned AS (
         roadway_dimensions_area,
         zip,
         bulding_number,
+        food_service_establishment,
         latitude,
         longitude
        ),
@@ -35,6 +36,7 @@ cleaned AS (
         WHEN  UPPER(TRIM(CAST(bulding_number AS STRING))) = 'UNDEFINED' THEN NULL
         ELSE CAST(bulding_number AS STRING)
         END AS building_number,
+
        CASE
         WHEN  UPPER(TRIM(CAST(food_service_establishment AS STRING))) = 'PENDING' THEN 'PENDING'
         ELSE CAST(food_service_establishment AS STRING)
