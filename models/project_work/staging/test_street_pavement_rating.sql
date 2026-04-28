@@ -3,5 +3,5 @@
      inspection,
      boroughname,
      systemrating
- FROM {{ source('raw_pavement_rating', 'street_pavement_data') }}
+ FROM {{ source('raw', 'street_pavement_data') }}
  LIMIT 10
