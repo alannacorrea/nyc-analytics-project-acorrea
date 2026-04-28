@@ -1,6 +1,6 @@
 version: 2
 sources:
-  - name: raw
+  - name: raw_project_data_311
     description: Raw data loaded from NYC Open Data
     database: acorrea-cis9440
     schema: group19_raw_data_open_nyc 
@@ -90,7 +90,7 @@ sources:
           - name: landmark
             description: Nearby landmark or point of interest
 
-  - name: raw
+  - name: raw_project_data_rating
     description: Raw data loaded from NYC Open Data
     database: jasminpersaud-cis-4400-d18
     schema: group19_raw_data_open_nyc 
