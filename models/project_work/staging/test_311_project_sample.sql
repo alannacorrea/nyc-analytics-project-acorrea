@@ -1,7 +1,7 @@
  SELECT
-     unique_key,
-     created_date,
-     complaint_type,
-     borough
- FROM {{ source('raw_project_data_311', 'nyc_311_raw_data') }}
+     oftcode,
+     inspection,
+     boroughname,
+     systemrating
+ FROM {{ source('raw_pavement_rating', 'street_pavement_data') }}
  LIMIT 10
