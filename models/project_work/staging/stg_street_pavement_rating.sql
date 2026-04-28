@@ -26,7 +26,7 @@ cleaned AS (
        -- Cast Values
        CAST(ismultipass AS STRING) AS ismultipass,
        CAST(systemrating AS DECIMAL) AS systemrating,
-       CAST(locationgeometry_stlength AS FLOAT) AS locationgeometry_stlength,
+       CAST(locationgeometry_stlength AS DECIMAL) AS locationgeometry_stlength,
 
        -- Location - standardized borough, just in case
        CASE
