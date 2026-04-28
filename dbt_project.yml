@@ -42,11 +42,11 @@ models:
    project_work:
        staging:
          +materialized: table
-         +schema: nyc_311_snow_complaints_pavement_staging
+         +schema: snow_complaints_pavement_rating_staging
 
        marts:
          +materialized: table
-         +schema: nyc_311_snow_complaints_paving_marts
+         +schema: snow_complaints_pavement_rating_marts
           
          shared:
            +materialized: table
