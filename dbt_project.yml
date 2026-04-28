@@ -46,7 +46,7 @@ models:
 
        marts:
          +materialized: table
-         +schema: nyc_311_snow_complaints_paving_staging_marts
+         +schema: nyc_311_snow_complaints_paving_marts
           
          shared:
            +materialized: table
