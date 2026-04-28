@@ -39,20 +39,20 @@ models:
        dot_311:
          +materialized: table
 
-  project_work:
-      staging:
-        +materialized: table
-        +schema: nyc_311_snow_complaints_pavement_staging
+      project_work:
+          staging:
+            +materialized: table
+            +schema: nyc_311_snow_complaints_pavement_staging
 
-      marts:
-        +materialized: table
-        +schema: nyc_311_snow_complaints_paving_staging_marts
-        
-        shared:
-          +materialized: table
+          marts:
+            +materialized: table
+            +schema: nyc_311_snow_complaints_paving_staging_marts
+            
+            shared:
+              +materialized: table
 
-        311_snow_complaints:
-          +materialized: table
+            311_snow_complaints:
+              +materialized: table
 
-        street_pavement_rating:
-          +materialized: table
+            street_pavement_rating:
+              +materialized: table
