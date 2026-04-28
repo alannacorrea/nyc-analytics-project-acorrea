@@ -14,7 +14,7 @@ cleaned AS (
            boroughname,
            ismultipass, 
            systemrating,
-           locationgeometry_stlength, 
+           locationgeometry_stlength
        ),
 
        -- Identifiers
@@ -26,13 +26,13 @@ cleaned AS (
        -- Cast Values
        CAST(ismultipass AS STRING) AS ismultipass,
        CAST(systemrating AS DECIMAL) AS systemrating,
-       CAST(locationgeometry_stlength AS FLOAT) AS systemrating,
+       CAST(locationgeometry_stlength AS FLOAT) AS locationgeometry_stlength,
 
        -- Location - standardized borough, just in case
        CASE
            WHEN boroughname IS NULL THEN  'UNKNOWN or CITYWIDE'
            ELSE boroughname
-       END AS borough
+       END AS borough,
 
        -- Metadata
        CURRENT_TIMESTAMP() AS _stg_loaded_at
@@ -43,8 +43,8 @@ cleaned AS (
    WHERE 
    oftcode IS NOT NULL
    AND inspection IS NOT NULL
-   AND CAST(inspection_date AS DATE) >= DATE_SUB(CURRENT_DATE(), INTERVAL 10 YEAR)
-   AND borough IS NOT NULL
+   AND CAST(inspection AS DATE) >= DATE_SUB(CURRENT_DATE(), INTERVAL 10 YEAR)
+   AND boroughname IS NOT NULL
 
    -- Deduplicate
    QUALIFY ROW_NUMBER() OVER (PARTITION BY oftcode ORDER BY inspection_date DESC) = 1
