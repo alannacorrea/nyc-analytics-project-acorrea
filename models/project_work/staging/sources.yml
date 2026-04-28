@@ -92,7 +92,7 @@ sources:
 
   - name: raw_pavement_rating
     description: Raw data loaded from NYC Open Data
-    database: jasminpersaud-cis-4400-d18
+    database: acorrea-cis9440
     schema: group19_raw_data_open_nyc 
     tables:
             
