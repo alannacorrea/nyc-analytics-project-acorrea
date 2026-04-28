@@ -89,13 +89,7 @@ sources:
             description: Y coordinate in NY State Plane projection system (NAD 83)
           - name: landmark
             description: Nearby landmark or point of interest
-
-  - name: raw_pavement_rating
-    description: Raw data loaded from NYC Open Data
-    database: acorrea-cis9440
-    schema: group19_raw_data_open_nyc 
-    tables:
-            
+      
       - name: street_pavement_data
         description: 
           Inspectors rate roadway pavement conditions throughout the five boroughs using the scale good, fair, and poor
