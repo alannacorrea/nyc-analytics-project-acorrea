@@ -32,7 +32,7 @@ cleaned AS (
        CASE
            WHEN boroughname IS NULL THEN  'UNKNOWN or CITYWIDE'
            ELSE boroughname
-       END AS borough,
+       END AS borough
 
        -- Metadata
        CURRENT_TIMESTAMP() AS _stg_loaded_at
