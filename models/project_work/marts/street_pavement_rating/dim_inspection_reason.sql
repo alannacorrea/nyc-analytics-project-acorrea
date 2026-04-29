@@ -1,7 +1,7 @@
 --  dimension for streets not receiving a rating
 WITH non_rating_reason AS (
    SELECT 
-        CASE WHEN nonratingreason IN ('Other', 'Does Not Exist') OR IS NULL THEN 'Not Available'
+        CASE WHEN nonratingreason IN ('Other', 'Does Not Exist') OR nonratingreason IS NULL THEN 'Not Available'
         ELSE nonratingreason
         END AS nonratingreason,
    FROM {{ ref('stg_street_pavement_rating') }}
