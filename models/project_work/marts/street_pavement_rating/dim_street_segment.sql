@@ -25,6 +25,6 @@ street_dimension AS (
       road_type, 
       ismultipass,
      FROM street_segement
-)
+),
 
 SELECT * FROM street_dimension
