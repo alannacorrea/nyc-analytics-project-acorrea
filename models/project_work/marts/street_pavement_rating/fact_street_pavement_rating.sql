@@ -3,7 +3,7 @@ WITH pavement_ratings AS (
 ),
 
 dim_street_segment AS (
-    SELECT street_segment_key, oftcode FROM {{ ref('dim_street_segment') }}
+    SELECT street_dimension_key, oftcode FROM {{ ref('dim_street_segment') }}
 ),
 
 dim_borough AS (
@@ -37,7 +37,7 @@ final AS (
         i.inspection_reason_key
 
     FROM pavement_ratings pr
-    
+
     -- Lookup Street Segment Key
     LEFT JOIN dim_street_segment s 
         ON pr.oftcode = s.oftcode
