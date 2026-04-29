@@ -31,7 +31,7 @@ final AS (
         pr.locationgeometry_stlength,
 
         -- Foreign Keys
-        s.street_segment_key,
+        s.street_dimension_key,
         b.borough_key,
         d.date_key AS inspection_date_key,
         i.inspection_reason_key
