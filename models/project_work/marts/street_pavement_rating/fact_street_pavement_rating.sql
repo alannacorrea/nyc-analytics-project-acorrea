@@ -44,7 +44,7 @@ final AS (
     
     -- Lookup Borough Key
     LEFT JOIN dim_borough b 
-        ON pr.borough_name = b.borough
+        ON pr.borough = b.borough
     
     -- Lookup Inspection Date Key
     LEFT JOIN dim_date d 
