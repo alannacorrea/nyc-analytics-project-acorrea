@@ -33,7 +33,7 @@ date_dimension AS (
 
   CASE WHEN EXTRACT(MONTH FROM full_date) IN (12, 1, 2) THEN 'Winter'
        WHEN EXTRACT(MONTH FROM full_date) IN (3, 4, 5) THEN 'Spring'
-       WHEN EXTRACT(MONTH FROM your full_date) IN (6, 7, 8) THEN 'Summer'
+       WHEN EXTRACT(MONTH FROM full_date) IN (6, 7, 8) THEN 'Summer'
        ELSE 'Fall' 
   END AS season
 
