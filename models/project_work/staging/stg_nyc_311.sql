@@ -91,4 +91,4 @@ cleaned AS (
 )
 
 SELECT * FROM cleaned
-WHERE lower(complaint_type) LIKE "%snow%" OR lower(descriptor) LIKE "%snow%"
+WHERE (lower(complaint_type) LIKE "%snow%" OR lower(descriptor) LIKE "%snow%")
