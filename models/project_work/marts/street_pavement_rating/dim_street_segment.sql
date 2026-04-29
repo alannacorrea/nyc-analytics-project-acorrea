@@ -17,7 +17,13 @@ street_dimension AS (
        {{ dbt_utils.generate_surrogate_key([
            'oftcode'
        ]) }} AS street_dimension_key,
-      *
+            oftcode, 
+      onstreetna, 
+      fromstreet, 
+      tostreetna, 
+      direction, 
+      road_type, 
+      ismultipass,
      FROM street_segement
 )
 
