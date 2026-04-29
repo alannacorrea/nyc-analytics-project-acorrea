@@ -91,4 +91,4 @@ cleaned AS (
 )
 
 SELECT * FROM cleaned
--- All should be part of this table: stg_nyc_311_dot
+WHERE lower(complaint_type) LIKE "%snow%" OR lower(descriptor) LIKE "%snow%"
