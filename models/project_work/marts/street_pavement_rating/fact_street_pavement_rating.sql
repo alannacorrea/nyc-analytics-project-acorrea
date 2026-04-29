@@ -11,7 +11,7 @@ dim_borough AS (
 ),
 
 dim_date AS (
-    SELECT date_key, date_value FROM {{ ref('dim_date') }}
+    SELECT date_key, date_value FROM {{ ref('dim_date_project') }}
 ),
 
 dim_inspection_reason AS (
