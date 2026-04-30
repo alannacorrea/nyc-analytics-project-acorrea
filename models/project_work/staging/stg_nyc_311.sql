@@ -91,4 +91,5 @@ cleaned AS (
 )
 
 SELECT * FROM cleaned
+--filtering for 311 snow complaints
 WHERE (lower(complaint_type) LIKE "%snow%" OR lower(descriptor) LIKE "%snow%")
