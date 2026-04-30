@@ -15,7 +15,7 @@ WITH all_dates AS (
 ),
 
 date_dimension AS (
-   SELECT
+   SELECT DISTINCT
        {{ dbt_utils.generate_surrogate_key(['full_date']) }} AS date_key,
 
        full_date AS date_value,

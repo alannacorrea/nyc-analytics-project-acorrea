@@ -13,7 +13,7 @@ WITH street_segement AS (
 ),
 
 street_dimension AS (
-   SELECT
+   SELECT DISTINCT
        {{ dbt_utils.generate_surrogate_key([
            'oftcode'
        ]) }} AS street_dimension_key,
