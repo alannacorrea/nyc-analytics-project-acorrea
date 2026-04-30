@@ -1,5 +1,5 @@
 --  dimension for NYC service agency lookup 
-WITH 311_agency AS (
+WITH agency_311 AS (
    SELECT DISTINCT
     agency, 
     agency_name,
@@ -15,7 +15,7 @@ agency_dimension AS (
        ]) }} AS agency_key,
       agency,
       agency_name
-     FROM 311_agency
+     FROM agency_311
 )
 
 SELECT * FROM agency_dimension
