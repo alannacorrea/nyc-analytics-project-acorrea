@@ -21,7 +21,7 @@ cleaned AS (
        CAST(oftcode AS STRING) AS oftcode,
 
        -- Date/Time
-       CAST(inspection AS TIMESTAMP) AS inspection_date,
+       CAST(inspection AS DATE) AS inspection_date,
 
        -- Cast Values
        CAST(ismultipass AS STRING) AS ismultipass,
