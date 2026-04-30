@@ -10,15 +10,13 @@ WITH street_segement AS (
       ismultipass
    FROM {{ ref('stg_street_pavement_rating') }}
    WHERE oftcode IS NOT NULL
-   GROUP BY oftcode
+   GROUP BY oftcode, onstreetna, fromstreet, tostreetna, direction, road_type, ismultipass
 ),
 
 street_dimension AS (
    SELECT DISTINCT
-       {{ dbt_utils.generate_surrogate_key([
-           'oftcode'
-       ]) }} AS street_dimension_key,
-            oftcode, 
+       {{ dbt_utils.generate_surrogate_key(['oftcode']) }} AS street_dimension_key,
+       oftcode, 
       onstreetna, 
       fromstreet, 
       tostreetna, 

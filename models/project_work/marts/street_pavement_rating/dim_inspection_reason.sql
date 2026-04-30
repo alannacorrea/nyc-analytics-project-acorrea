@@ -1,6 +1,6 @@
 --  dimension for streets not receiving a rating
 WITH non_rating_reason AS (
-   SELECT 
+   SELECT DISTINCT
         CASE WHEN nonratingreason IN ('Other', 'Does Not Exist') OR nonratingreason IS NULL THEN 'Not Available'
         ELSE nonratingreason
         END AS nonratingreason,
