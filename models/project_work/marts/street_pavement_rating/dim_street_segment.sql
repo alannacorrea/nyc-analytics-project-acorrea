@@ -7,9 +7,10 @@ WITH street_segement AS (
       tostreetna, 
       direction, 
       road_type, 
-      ismultipass,
+      ismultipass
    FROM {{ ref('stg_street_pavement_rating') }}
    WHERE oftcode IS NOT NULL
+   GROUP BY oftcode
 ),
 
 street_dimension AS (
