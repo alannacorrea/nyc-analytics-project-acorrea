@@ -10,12 +10,14 @@ cleaned AS (
 
        * EXCEPT (
            unique_key,
+           bbl,
            created_date,
            closed_date,
            agency,
            agency_name,
            complaint_type,
            descriptor,
+           descriptor_2,
            status,
            incident_zip,
            borough,
@@ -30,16 +32,21 @@ cleaned AS (
 
        -- Identifiers
        CAST(unique_key AS STRING) AS request_id,
+       CAST(bbl AS STRING) as bbl_id,
+
 
        -- Date/Time
-       CAST(created_date AS TIMESTAMP) AS created_date,
-       CAST(closed_date AS TIMESTAMP) AS closed_date,
+       CAST(created_date AS DATE) AS created_date,
+       CAST(closed_date AS DATE) AS closed_date,
 
        -- Request details
        CAST(agency AS STRING) AS agency,
        CAST(agency_name AS STRING) AS agency_name,
        CAST(complaint_type AS STRING) AS complaint_type,
        CAST(descriptor AS STRING) AS descriptor,
+       CASE WHEN descriptor_2 IS NULL THEN 'N/A' --prevents surrogate key downstream from exploding on join
+        ELSE CAST(descriptor_2 AS STRING) 
+        END AS additional_details,
        UPPER(TRIM(CAST(status AS STRING))) AS status,
 
        -- Location - clean zip code, handling several common zip code data problems

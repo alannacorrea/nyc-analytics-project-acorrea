@@ -16,6 +16,7 @@ agency_dimension AS (
       agency,
       agency_name
      FROM agency_311
+     GROUP BY 1,2,3
 )
 
 SELECT * FROM agency_dimension

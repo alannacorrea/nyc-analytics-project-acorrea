@@ -1,21 +1,26 @@
--- Date dimension shared by both restaurant applications and 311 requests
-
 WITH all_dates AS (
-   -- Get dates (dates, no time included) from 311 requests
-   SELECT DISTINCT CAST(created_date AS DATE) AS full_date
+   -- 311 Created Dates
+   SELECT CAST(created_date AS DATE) AS full_date
    FROM {{ ref('stg_nyc_311') }}
    WHERE created_date IS NOT NULL
 
    UNION DISTINCT
 
-   -- Get dates from street pavement rating
-   SELECT DISTINCT CAST(inspection_date AS DATE) AS full_date
+   -- 311 Closed Dates 
+   SELECT CAST(closed_date AS DATE) AS full_date
+   FROM {{ ref('stg_nyc_311') }}
+   WHERE closed_date IS NOT NULL
+
+   UNION DISTINCT
+
+   --Street pavement rating dates
+   SELECT CAST(inspection_date AS DATE) AS full_date
    FROM {{ ref('stg_street_pavement_rating') }}
    WHERE inspection_date IS NOT NULL
 ),
 
 date_dimension AS (
-   SELECT DISTINCT
+   SELECT
        {{ dbt_utils.generate_surrogate_key(['full_date']) }} AS date_key,
 
        full_date AS date_value,
@@ -29,13 +34,13 @@ date_dimension AS (
        EXTRACT(YEAR FROM full_date) AS year,
        EXTRACT(DAYOFWEEK FROM full_date) IN (1, 7) AS is_weekend,
 
---adding in logic for seasonality
-
-  CASE WHEN EXTRACT(MONTH FROM full_date) IN (12, 1, 2) THEN 'Winter'
-       WHEN EXTRACT(MONTH FROM full_date) IN (3, 4, 5) THEN 'Spring'
-       WHEN EXTRACT(MONTH FROM full_date) IN (6, 7, 8) THEN 'Summer'
-       ELSE 'Fall' 
-  END AS season
+       -- Seasonality Logic
+       CASE 
+            WHEN EXTRACT(MONTH FROM full_date) IN (12, 1, 2) THEN 'Winter'
+            WHEN EXTRACT(MONTH FROM full_date) IN (3, 4, 5) THEN 'Spring'
+            WHEN EXTRACT(MONTH FROM full_date) IN (6, 7, 8) THEN 'Summer'
+            ELSE 'Fall' 
+       END AS season
 
    FROM all_dates
 )

@@ -2,6 +2,7 @@
 
 WITH all_locations AS (
    SELECT DISTINCT
+        bbl_id,
         incident_zip,
         city, 
         community_board, 
@@ -10,7 +11,10 @@ WITH all_locations AS (
         location_type
    FROM {{ ref('stg_nyc_311') }}
 
+WHERE bbl_id IS NOT NULL
+
    GROUP BY 
+        bbl_id,
         incident_zip,
         city, 
         community_board, 
@@ -22,13 +26,9 @@ WITH all_locations AS (
 location_dimension AS (
    SELECT
        {{ dbt_utils.generate_surrogate_key([
-        'incident_zip',
-        'city', 
-        'community_board', 
-        'council_district', 
-        'police_precinct',
-        'location_type',
+        'bbl_id', 'incident_zip', 'city', 'community_board', 'council_district', 'police_precinct', 'location_type'
        ]) }} AS location_key,
+        bbl_id,
         incident_zip,
         city, 
         community_board, 
